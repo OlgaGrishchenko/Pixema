@@ -1,0 +1,51 @@
+.input {
+   font-family: "Exo 2";
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 24px;
+   color: #FFFFFF;
+   background: #323537;
+   border-radius: 10px;
+   height: 56px;
+   width: 438px;
+   padding-left: 20px;
+   border-color: transparent;
+}
+
+.input:focus {
+   outline: none;
+   border: 2px solid #7B61FF;
+}
+
+.input:active {
+   outline: none;
+   border-color: transparent;
+}
+
+.input:disabled {
+   background: #80858B;
+}
+
+.inputError {
+   border-color: #FF5154;
+}
+
+.title {
+   font-family: "Exo 2";
+   font-style: normal;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 24px;
+   color: #ffffff;
+   margin-bottom: 8px;
+}
+
+.textError {
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 24px;
+   color: #FF5154;
+}
