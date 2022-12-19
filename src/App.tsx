@@ -3,6 +3,7 @@ import "./App.css";
 import Button, { ButtonTypes } from "./Components/Button";
 import Footer from "./Components/Footer";
 import Input from "./Components/Input";
+import Search from "./Components/Search";
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
                   onChange={ (value: string) => (queueMicrotask) }
                   placeholder={"Your email"}
               />
-      <Footer />
+      
+      <Search value={""} disabled={false} filters={true} />
+        <Footer />
     </div>
   );
 }
