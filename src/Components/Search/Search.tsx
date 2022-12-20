@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import { SearchIcon } from '../../Assets/Search/SearchIcon';
 
 import classNames from 'classnames';
 import styles from './Search.module.css';
+
 import { SearchFilteredIcon } from '../../Assets/Search/SearchFilteredIcon';
+import { SearchIcon } from '../../Assets/Search/SearchIcon';
 
 type SearchProps = {
    value: string;
