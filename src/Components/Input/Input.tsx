@@ -29,7 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
    };
 
    return (
-      <div>
+      <>
          {title && <div className={styles.title}>{title}</div>}
             <input
                value={value}
@@ -40,7 +40,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
                className={classNames(className, styles.input)}
             />
             {error && <div className={styles.textError}>{error}</div>}
-      </div>
+      </>
    );
 });
 
