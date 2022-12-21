@@ -10,9 +10,9 @@ type FormContainerProps  = {
 
 const FormContainer: React.FC<FormContainerProps> = ({ title, children }) => {
    return (
-      <div className={styles.form}>
+      <div className={styles.container}>
          <h1 className={styles.title}>{title}</h1>
-         <div>{children}</div>
+         <div className={styles.childrenContainer}>{children}</div>
       </div>
    );
 };

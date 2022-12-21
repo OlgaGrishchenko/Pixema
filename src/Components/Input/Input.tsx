@@ -10,7 +10,6 @@ type InputProps = {
    disabled?: boolean;
    error?: string;
    title?: string;
-   onDefaultClick?: () => void;
    className?: string;
 };
 
@@ -22,7 +21,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       disabled,
       error,
       title,
-      onDefaultClick,
       className,
    } = props;
 
@@ -38,7 +36,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
                onChange={onChangeInput}
                placeholder={placeholder}
                disabled={disabled}
-               onClick={onDefaultClick}
                ref={ref}
                className={classNames(className, styles.input)}
             />

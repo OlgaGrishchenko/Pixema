@@ -1,20 +1,22 @@
 import React from "react";
 import "./App.css";
-import Button, { ButtonTypes } from "./Components/Button";
+import FormContainer from "./Components/FormContainer";
 import Input from "./Components/Input";
-import Search from "./Components/Search";
 
 function App() {
   return (
     <div className="App">
-      <Input
+
+      <FormContainer title={"Sign In"}>
+      <>
+        <Input
                   title={"Title"}
                   value={""}
                   onChange={ (value: string) => (queueMicrotask) }
                   placeholder={"Your email"}
               />
-      
-      <Search value={""} disabled={false} filters={false} />
+      </>
+    </FormContainer>
 
     </div>
   );
