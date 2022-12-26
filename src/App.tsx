@@ -2,22 +2,12 @@ import React from "react";
 import "./App.css";
 import FormContainer from "./Components/FormContainer";
 import Input from "./Components/Input";
+import NewPassword from "./Pages/NewPassword";
 
 function App() {
   return (
     <div className="App">
-
-      <FormContainer title={"Sign In"}>
-      <>
-        <Input
-                  title={"Title"}
-                  value={""}
-                  onChange={ (value: string) => (queueMicrotask) }
-                  placeholder={"Your email"}
-              />
-      </>
-    </FormContainer>
-
+      <NewPassword />
     </div>
   );
 }
