@@ -22,3 +22,13 @@
    font-size: 20px;
    line-height: 24px;
 }
+
+.arrowButton {
+   background-color: transparent;
+   transition: all 0.5s;
+}
+
+.arrowButton:hover {
+   background-color: transparent;
+   transition: all 0.5s;
+}

@@ -1,0 +1,57 @@
+.container {
+   max-width: 266px;
+   max-height: 433px;
+   position: relative;
+}
+
+.rating {
+   position: absolute;
+   left: 20px;
+   top: 20px;
+   color: white;
+   font-weight: 600;
+   padding: 2px 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 6px;
+   width: 37px;
+   height: 28px;
+}
+
+.ratingRed {
+   background-color: #F45D2D;
+}
+
+.ratingYellow {
+   background-color:  #F3A608;
+}
+
+.ratingGreen {
+   background-color: #00A340;
+}
+
+.card {
+   width: 266px;
+   height: 357px;
+   border-radius: 20px;
+}
+
+.title {
+   color: #FFFFFF;
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 24px;
+}
+
+.genres {
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 24px;
+   color: #AFB2B6;
+}
+

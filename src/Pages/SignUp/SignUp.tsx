@@ -25,11 +25,6 @@ const SignIn = () => {
    }, []);
    
    return (
-      <div className={styles.inner}>
-
-         <div className={styles.logo}>
-            <Logo />
-         </div>
          
          <FormContainer title={"Sign Up"}>
          <>
@@ -77,7 +72,6 @@ const SignIn = () => {
                </div>
             </>
             </FormContainer>
-         </div>
    );
 };
 

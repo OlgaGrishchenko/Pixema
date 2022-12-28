@@ -21,11 +21,6 @@ const NewPassword = () => {
       }, []);
    
    return (
-<div>
-      <div className={styles.logo}>
-            <Logo />
-         </div>
-
 
       <FormContainer title={"Reset password"}>
             <>
@@ -56,7 +51,6 @@ const NewPassword = () => {
                />
             </>
       </FormContainer>
-      </div>
    );
 };
 
