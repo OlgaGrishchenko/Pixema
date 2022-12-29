@@ -26,6 +26,7 @@
 .arrowButton {
    background-color: transparent;
    transition: all 0.5s;
+   width: 15px;
 }
 
 .arrowButton:hover {

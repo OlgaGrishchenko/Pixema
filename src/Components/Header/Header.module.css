@@ -1,0 +1,18 @@
+.inner {
+   padding-top: 40px;
+   margin-bottom: 56px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 40px;
+}
+
+.innerBlock{
+   display: flex;
+   gap: 40px;
+}
+
+.logo{
+   width: 263px;
+   margin-right: 40px;
+}

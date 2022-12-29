@@ -5,7 +5,6 @@ import Button, {ButtonTypes} from "../../Components/Button";
 import classNames from "classnames";
 
 import styles from "./ResetPassword.module.css";
-import Logo from "../../Assets/Image/logo";
 
 const ResetPassword = () => {
 

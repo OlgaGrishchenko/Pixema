@@ -1,9 +1,11 @@
 import React, { FC, ReactElement } from "react";
+import { NavLink } from "react-router-dom";
 
 import styles from "./FormContainer.module.css";
 import classNames from "classnames";
 import Logo from "../../Assets/Image/logo";
 import Footer from "../Footer";
+import { PathNames } from "../../Pages/Router/Router";
 
 type FormContainerProps  = {
    title: string;
@@ -15,7 +17,7 @@ const FormContainer: React.FC<FormContainerProps> = ({ title, children }) => {
       <div className={styles.container}>
 
          <div className={styles.logo}>
-            <Logo />
+         <NavLink to={PathNames.Home} className={styles.link}><Logo /></NavLink>
          </div>
 
          <div className={styles.formContainer}>

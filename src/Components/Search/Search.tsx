@@ -7,9 +7,9 @@ import { SearchFilteredIcon } from '../../Assets/Search/SearchFilteredIcon';
 import { SearchIcon } from '../../Assets/Search/SearchIcon';
 
 type SearchProps = {
-   value: string;
-   disabled: boolean;
-   filters: boolean;
+   value?: string;
+   disabled?: boolean;
+   filters?: boolean;
    className?: string;
 };
 

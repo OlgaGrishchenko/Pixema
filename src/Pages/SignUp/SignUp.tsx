@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 import FormContainer from "../../Components/FormContainer";
 import Input from "../../Components/Input";
 import Button, {ButtonTypes} from "../../Components/Button";
 
 import styles from "./SignUp.module.css";
-import Logo from "../../Assets/Image/logo";
-import Footer from "../../Components/Footer";
+import { PathNames } from "../Router/Router";
 
 const SignIn = () => {
 
@@ -68,7 +68,7 @@ const SignIn = () => {
                />
                
                <div className={styles.signContainer}>
-               {"Already have an account?"}{" "} <span className={styles.link}>{"Sign In"}</span>
+               {"Already have an account?"}{" "} <NavLink to={PathNames.SignIn} className={styles.link}>{"Sign In"}</NavLink>
                </div>
             </>
             </FormContainer>
