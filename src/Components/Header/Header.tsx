@@ -19,7 +19,7 @@ const Header = () => {
 
          <div className={styles.innerBlock}>
          <Search />
-         <UserName username={"Olga"}/>
+         <UserName username={"Olga_Grishchenko"}/>
          </div>
       </div>
    );
