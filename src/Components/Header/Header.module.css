@@ -1,17 +1,13 @@
 .inner {
-   padding-top: 40px;
-   margin-bottom: 56px;
+   padding: 40px 64px 56px;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   gap: 40px;
+   gap: 136px;
 }
 
 .innerBlock{
    display: flex;
-   gap: 40px;
-}
-
-.logo{
-   margin-left: 64px;
+   gap: 41px;
+   width: 100%;
 }

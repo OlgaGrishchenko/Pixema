@@ -3,6 +3,6 @@
    flex-wrap: wrap;
    gap: 40px;
    max-width: 1490px;
-   max-height: 906px;
+   height: 100%;
    margin-bottom: 64px;
 }
