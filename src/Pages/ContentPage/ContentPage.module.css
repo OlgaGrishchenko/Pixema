@@ -1,0 +1,79 @@
+.container {
+   display: flex;
+
+}
+
+.oneFilm {
+   display: flex;
+   gap: 41px;
+}
+
+.leftContainer {
+   display: flex;
+   flex-direction: column;
+   gap: 32px;
+   align-items: flex-start;
+}
+
+.image {
+   width: 266px;
+   max-height: 356px;
+}
+
+.rightContainer {
+   max-width: 878px;
+   text-align: start;
+   padding-right: 300px;
+}
+
+.genres {
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 24px;
+   color: #AFB2B6;
+}
+
+.title {
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 40px;
+   line-height: 60px;
+   color: #FFFFFF;
+   margin-bottom: 26px;
+}
+
+.rating {
+   color: white;
+   font-weight: 600;
+   padding: 2px 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 6px;
+   width: 37px;
+   height: 28px;
+   background-color: green;
+   margin-bottom: 56px;
+}
+
+.desc {
+   font-family: 'Exo 2';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+color: #FFFFFF;
+margin-bottom: 40px;
+}
+
+.info {
+   font-family: 'Exo 2';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: #AFB2B6;
+}

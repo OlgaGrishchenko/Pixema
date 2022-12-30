@@ -17,6 +17,7 @@ const ButtonGroup: FC<ButtonGroupProps> = (props) => {
    const { title, onClick, className, disabled } = props;
 
    return (
+      <>
       <div className={styles.ButtonGroup}>
 
       <div
@@ -34,6 +35,7 @@ const ButtonGroup: FC<ButtonGroupProps> = (props) => {
       </div>
 
       </div>
+      </>
    );
 };
 
