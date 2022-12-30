@@ -8,7 +8,7 @@ import { PathNames } from "../Router/Router";
 
 import styles from "./ContentPage.module.css";
 import classNames from "classnames";
-import { Card } from "@material-ui/core";
+import Card from "../../Components/Card";
 import Menu from "../../Components/Menu";
 
 const MOCK_CARD = {
@@ -44,11 +44,26 @@ const ContentPage = () => {
                 </div>
 
                 <div className={styles.rightContainer}>
-                    <div className={styles.genres}>{MOCK_CARD.genres}</div>
-                    <div className={styles.title}>{MOCK_CARD.title}</div>
-                    <div className={styles.rating}>{MOCK_CARD.rating}</div>
-                    <div className={styles.desc}>In 1984, after saving the world in Wonder Woman (2017), the immortal Amazon warrior, Princess Diana of Themyscira, finds herself trying to stay under the radar, working as an archaeologist at the Smithsonian Museum. With the memory of the brave U.S. pilot, Captain Steve Trevor, etched on her mind, Diana Prince becomes embroiled in a sinister conspiracy of global proportions when a transparent, golden-yellow citrine gemstone catches the eye of the power-hungry entrepreneur, Maxwell Lord</div>
-                    <div className={styles.info}>{"Year"}</div>
+
+                    <div className={styles.topContainer}>
+                        <div className={styles.genres}>{MOCK_CARD.genres}</div>
+                        <div className={styles.title}>{MOCK_CARD.title}</div>
+                        <div className={styles.rating}>{MOCK_CARD.rating}</div>
+                        <div className={styles.desc}>In 1984, after saving the world in Wonder Woman (2017), the immortal Amazon warrior, Princess Diana of Themyscira, finds herself trying to stay under the radar, working as an archaeologist at the Smithsonian Museum. With the memory of the brave U.S. pilot, Captain Steve Trevor, etched on her mind, Diana Prince becomes embroiled in a sinister conspiracy of global proportions when a transparent, golden-yellow citrine gemstone catches the eye of the power-hungry entrepreneur, Maxwell Lord</div>
+                        <div className={styles.info}>{"Year"}</div>
+                    </div>
+
+                    <div className={styles.downContainer}>
+
+                        <div className={styles.recommendations}>Recommendations</div>
+                        
+
+                        <div className={styles.cards}>
+                            <Card card={MOCK_CARD}/>
+                            <Card card={MOCK_CARD}/>
+                        </div>
+
+                    </div>
                 </div>
 
     </div>
