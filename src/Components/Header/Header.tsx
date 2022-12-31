@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Logo from '../../Assets/Image/logo';
 import { PathNames } from '../../Pages/Router/Router';
 import Search from '../Search';

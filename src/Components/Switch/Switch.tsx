@@ -4,7 +4,7 @@ import styles from "./Switch.module.css"
 import classNames from 'classnames';
 
 type SwitchProps = {
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 };
 

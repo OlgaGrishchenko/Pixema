@@ -10,6 +10,7 @@ import ResetPassword from "../ResetPassword";
 import PagesWrapper from "../PagesWrapper";
 import Home from "../Home";
 import ContentPage from "../ContentPage";
+import SettingsPage from "../SettingsPage";
 
 
 export enum PathNames {
@@ -19,7 +20,7 @@ export enum PathNames {
    NewPassword = "/new-password",
    ResetPassword = "/reset-password",
    Search = "/search/:searchString",
-   Settings = "/settings",
+   SettingsPage = "/settings",
    ContentPage = "/content-page",
 }
 
@@ -32,6 +33,7 @@ const Router = () => {
 
             <Route path={PathNames.Home} element={<PagesWrapper />}>
                <Route path={PathNames.ContentPage} element={<ContentPage />} />
+               <Route path={PathNames.SettingsPage} element={<SettingsPage />} />
 
             </Route>
 
