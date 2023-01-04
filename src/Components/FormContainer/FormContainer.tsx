@@ -16,10 +16,6 @@ const FormContainer: React.FC<FormContainerProps> = ({ title, children }) => {
    return (
       <div className={styles.container}>
 
-         <div className={styles.logo}>
-         <NavLink to={PathNames.Home} className={styles.link}><Logo /></NavLink>
-         </div>
-
          <div className={styles.formContainer}>
             <h1 className={styles.title}>{title}</h1>
             <div className={styles.childrenContainer}>{children}</div>

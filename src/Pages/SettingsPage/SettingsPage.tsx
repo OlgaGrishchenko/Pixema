@@ -8,7 +8,7 @@ import Switch from '../../Components/Switch';
 
 import styles from './SettingsPage.module.css';
 import classNames from 'classnames';
-import Menu from "../../Components/Menu";
+import Sidebar from "../../Components/Sidebar";
 
 const SettingsPage = () => {
 
@@ -20,7 +20,7 @@ const SettingsPage = () => {
    return (
       <>
       <div className={styles.container}>
-         <Menu />
+         <Sidebar />
 
          <div className={styles.settings}>
             <div className={styles.settingsBlock}>

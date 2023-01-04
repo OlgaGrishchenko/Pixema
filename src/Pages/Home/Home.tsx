@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import CardsList from "../../Components/CardsList";
 import { CardsListType } from "../../Constants/@types";
 import Header from "../../Components/Header";
-import Menu from "../../Components/Menu";
+import Sidebar from "../../Components/Sidebar";
 
 import styles from "./Home.module.css";
 import { ButtonGroup } from "@material-ui/core";
@@ -27,7 +27,7 @@ const Home = () => {
    return (
    <>
       <div className={styles.container}>
-         <Menu />
+         <Sidebar />
          <CardsList cardsList={MOCK_CARDS_LIST} />
       </div>
    </>

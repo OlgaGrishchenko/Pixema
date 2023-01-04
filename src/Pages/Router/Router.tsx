@@ -11,6 +11,7 @@ import PagesWrapper from "../PagesWrapper";
 import Home from "../Home";
 import ContentPage from "../ContentPage";
 import SettingsPage from "../SettingsPage";
+import LogoWrapper from "../LogoWrapper";
 
 
 export enum PathNames {
@@ -37,10 +38,12 @@ const Router = () => {
 
             </Route>
 
+            <Route path={PathNames.Home} element={<LogoWrapper />}>
                <Route path={PathNames.SignIn} element={<SignIn />} />
                <Route path={PathNames.SignUp} element={<SignUp />} />
                <Route path={PathNames.NewPassword} element={<NewPassword />} />
                <Route path={PathNames.ResetPassword} element={<ResetPassword />} />
+            </Route>
 
                <Route path="*" element={<Navigate to={PathNames.SignIn} />} />
          </Routes>

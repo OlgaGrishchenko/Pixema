@@ -6,11 +6,11 @@ import { HomeIcon } from "../../Assets/Menu/HomeIcon";
 import { SettingsIcon } from "../../Assets/Menu/SettingsIcon";
 import { TrendsIcon } from "../../Assets/Menu/TrendsIcon";
 
-import styles from "./Menu.module.css";
+import styles from "./Sidebar.module.css";
 import classNames from 'classnames';
 
 
-const Menu = () => {
+const Sidebar = () => {
    const { pathname } = useLocation();
 
    const CATEGORIES = [
@@ -42,4 +42,4 @@ const Menu = () => {
    );
 };
 
-export default Menu;
+export default Sidebar;

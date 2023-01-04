@@ -9,7 +9,7 @@ import { PathNames } from "../Router/Router";
 import styles from "./ContentPage.module.css";
 import classNames from "classnames";
 import Card from "../../Components/Card";
-import Menu from "../../Components/Menu";
+import Sidebar from "../../Components/Sidebar";
 
 const MOCK_CARD = {
     id: 0,
@@ -29,7 +29,7 @@ const ContentPage = () => {
 
     return (
         <div className={styles.container}>
-            <Menu />
+            <Sidebar />
 
             <div className={styles.oneFilm}>
 
