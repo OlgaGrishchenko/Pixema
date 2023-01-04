@@ -12,6 +12,8 @@ type UserNameProps = {
 
 const UserName: FC<UserNameProps> = ({ username }) => {
 
+   const isLoggedIn = true;
+
    const [isOpened, setOpened] = useState(false);
 
    const onArrowClick = () => {
