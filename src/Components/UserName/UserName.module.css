@@ -13,6 +13,10 @@
    position: relative;
 }
 
+.lightContainer {
+   color: #242426;
+}
+
 .letter {
    padding: 16px 20px;
    background: #7B61FF;
@@ -22,6 +26,10 @@
    font-weight: 700;
    font-size: 20px;
    line-height: 24px;
+}
+
+.lightLetter {
+   color: #fff;
 }
 
 .arrowButton {

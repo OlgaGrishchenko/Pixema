@@ -1,5 +1,8 @@
 import React, { FC } from "react";
 
+import { useThemeContext } from "../../Context/Theme";
+import { Theme } from "../../Constants/@types";
+
 import styles from "./Card.module.css"
 import classNames from "classnames";
 
@@ -11,6 +14,8 @@ type CardProps = {
 
 const Card: FC<CardProps> = ({ card }) => {
    const { image, rating, title, genres } = card;
+
+   const {theme} = useThemeContext()
 
    return (
       <div className={styles.container}>
@@ -26,7 +31,7 @@ const Card: FC<CardProps> = ({ card }) => {
          </span>
 
          <img className={styles.card} src={image} alt={''} />
-         <div className={styles.title}>{title}</div>
+         <div className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>{title}</div>
          <div className={styles.genres}>{genres}</div>
       </div>
    );

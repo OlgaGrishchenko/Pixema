@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import FormContainer from "../../Components/FormContainer";
 import Input from "../../Components/Input";
 import Button, {ButtonTypes} from "../../Components/Button";
-import classNames from "classnames";
 
+import classNames from "classnames";
 import styles from "./NewPassword.module.css";
 
 const NewPassword = () => {

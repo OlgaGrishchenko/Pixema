@@ -46,6 +46,10 @@
    line-height: 24px;
 }
 
+.lightTitle {
+   color: #242426;
+}
+
 .genres {
    font-family: 'Exo 2';
    font-style: normal;

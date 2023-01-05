@@ -47,6 +47,10 @@
    margin-bottom: 26px;
 }
 
+.lightTitle {
+   color: #242426;
+}
+
 .rating {
    color: white;
    font-weight: 600;
@@ -71,6 +75,10 @@ color: #FFFFFF;
 margin-bottom: 40px;
 }
 
+.lightDesc {
+   color: #242426;
+}
+
 .info {
    font-family: 'Exo 2';
 font-style: normal;
@@ -93,6 +101,10 @@ font-weight: 600;
 font-size: 24px;
 line-height: 36px;
 color: #FFFFFF;
+}
+
+.lightRecommendations {
+   color: #242426;
 }
 
 .cards {

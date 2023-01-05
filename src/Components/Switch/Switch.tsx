@@ -1,5 +1,9 @@
 import React, {FC, useState, Component } from "react";
 
+import { useThemeContext } from "../../Context/Theme";
+import { Theme } from "../../Constants/@types";
+
+
 import styles from "./Switch.module.css"
 import classNames from 'classnames';
 
@@ -9,6 +13,8 @@ type SwitchProps = {
 };
 
 const Switch: FC<SwitchProps> = () => {
+  
+  const { theme, onChangeTheme } = useThemeContext();
 
   return (
     <div

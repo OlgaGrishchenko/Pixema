@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import { useThemeContext } from "../../Context/Theme";
+import { Theme } from "../../Constants/@types";
 
 import classNames from 'classnames';
 import styles from './Search.module.css';
@@ -21,11 +23,13 @@ const Search: FC<SearchProps> = (props) => {
       className,
    } = props;
 
+   const {theme} = useThemeContext();
+
    return (
       <div className={styles.wrapper}>
          <input
             placeholder="Search"
-            className={classNames(styles.input, { [styles.disabled]: disabled })}
+            className={classNames(styles.input, { [styles.disabled]: disabled }, {[styles.lightInput] : theme === Theme.Light})}
          />
       {filters ? (
          <div className={styles.svg}><SearchFilteredIcon /></div>

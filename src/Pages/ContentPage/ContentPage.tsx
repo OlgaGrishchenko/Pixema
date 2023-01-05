@@ -6,10 +6,14 @@ import ButtonGroup from "../../Components/ButtonGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import { PathNames } from "../Router/Router";
 
-import styles from "./ContentPage.module.css";
-import classNames from "classnames";
 import Card from "../../Components/Card";
 import Sidebar from "../../Components/Sidebar";
+
+import { useThemeContext } from "../../Context/Theme";
+import { Theme } from "../../Constants/@types";
+
+import styles from "./ContentPage.module.css";
+import classNames from "classnames";
 
 const MOCK_CARD = {
     id: 0,
@@ -23,6 +27,7 @@ const MOCK_CARD = {
 
 
 const ContentPage = () => {
+    const {theme} = useThemeContext();
     const params = useParams();
     const { id } = params;
 
@@ -47,15 +52,15 @@ const ContentPage = () => {
 
                     <div className={styles.topContainer}>
                         <div className={styles.genres}>{MOCK_CARD.genres}</div>
-                        <div className={styles.title}>{MOCK_CARD.title}</div>
+                        <div className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>{MOCK_CARD.title}</div>
                         <div className={styles.rating}>{MOCK_CARD.rating}</div>
-                        <div className={styles.desc}>In 1984, after saving the world in Wonder Woman (2017), the immortal Amazon warrior, Princess Diana of Themyscira, finds herself trying to stay under the radar, working as an archaeologist at the Smithsonian Museum. With the memory of the brave U.S. pilot, Captain Steve Trevor, etched on her mind, Diana Prince becomes embroiled in a sinister conspiracy of global proportions when a transparent, golden-yellow citrine gemstone catches the eye of the power-hungry entrepreneur, Maxwell Lord</div>
+                        <div className={classNames(styles.desc, {[styles.lightDesc] : theme === Theme.Light})}>In 1984, after saving the world in Wonder Woman (2017), the immortal Amazon warrior, Princess Diana of Themyscira, finds herself trying to stay under the radar, working as an archaeologist at the Smithsonian Museum. With the memory of the brave U.S. pilot, Captain Steve Trevor, etched on her mind, Diana Prince becomes embroiled in a sinister conspiracy of global proportions when a transparent, golden-yellow citrine gemstone catches the eye of the power-hungry entrepreneur, Maxwell Lord</div>
                         <div className={styles.info}>{"Year"}</div>
                     </div>
 
                     <div className={styles.downContainer}>
 
-                        <div className={styles.recommendations}>Recommendations</div>
+                        <div className={classNames(styles.recommendations, {[styles.lightRecommendations] : theme === Theme.Light})}>Recommendations</div>
                         
 
                         <div className={styles.cards}>
