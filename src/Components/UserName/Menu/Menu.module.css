@@ -8,11 +8,14 @@
 .buttonsContainer {
    display: flex;
    flex-direction: column;
-   gap: 1px;
 }
 
 .editProfileButton {
    border-radius: 10px 10px 0px 0px;
+}
+
+.editProfileButton:first-child {
+   border-bottom: 1px solid #AFB2B6;
 }
 
 .logOutButton {

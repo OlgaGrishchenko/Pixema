@@ -3,7 +3,7 @@ import { Theme } from '../../Constants/@types';
 
 type ThemeContextType = {
     theme: Theme;
-    onChangeTheme?: (value:Theme) => void;
+    onChangeTheme: (value:Theme) => void | undefined;
 };
 
 const DEFAULT_VALUE = {
