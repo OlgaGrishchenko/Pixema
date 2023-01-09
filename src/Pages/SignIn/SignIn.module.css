@@ -40,3 +40,17 @@
    color:#917CFF;
    transition: all 0.3s;
 }
+
+.passwordContainer {
+   position: relative;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+}
+
+.eyeIcon {
+   position: absolute;
+   top: 70px;
+   right: 20px;
+}

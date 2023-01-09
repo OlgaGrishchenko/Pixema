@@ -4,17 +4,33 @@ import { NavLink } from "react-router-dom";
 import FormContainer from "../../Components/FormContainer";
 import Input from "../../Components/Input";
 import Button, {ButtonTypes} from "../../Components/Button";
+import { ClosedEyeIcon } from "../../Assets/Password/ClosedEyeIcon";
+import { OpenEyeIcon } from "../../Assets/Password/OpenEyeIcon";
+import { PasswordTypes } from "../../Constants/@types";
 
 import styles from "./SignUp.module.css";
 import { PathNames } from "../Router/Router";
 
-const SignIn = () => {
+const SignUp = () => {
 
    const [name, setName] = useState("");
    const [login, setLogin] = useState("");
    const [password, setPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
 
+   const [type, setType] = useState(PasswordTypes.Password);
+   const onEyeClick = () => {
+      type === PasswordTypes.Password
+      ? setType(PasswordTypes.Text)
+      : setType(PasswordTypes.Password);
+   };
+
+   const [typeConfirm, setTypeConfirm] = useState(PasswordTypes.Password);
+   const onEyeClickConfirm = () => {
+      typeConfirm === PasswordTypes.Password
+      ? setTypeConfirm(PasswordTypes.Text)
+      : setTypeConfirm(PasswordTypes.Password);
+   };
 
    const inputRef = useRef<HTMLInputElement>(null);
 
@@ -45,19 +61,37 @@ const SignIn = () => {
                   placeholder={"Your email"}
                />
 
-               <Input
-                  title={"Password"}
-                  value={password}
-                  onChange={(value:string) => setPassword(value)}
-                  placeholder={"Your password"}
-               />
+               <div className={styles.passwordContainer}>
+                  <Input
+                     title={"Password"}
+                     type={type}
+                     value={password}
+                     onChange={(value: string) => setPassword(value)}
+                     placeholder={"Your password"}
+                  />
+                  <div className={styles.eyeIcon} onClick={onEyeClick}>
+                     {password && type !== "password" ? (
+                     <ClosedEyeIcon />
+                     ) : (
+                     <OpenEyeIcon />)}
+                  </div>
+               </div>
 
-               <Input
-                  title={"Confirm password"}
-                  value={confirmPassword}
-                  onChange={(value:string) => setConfirmPassword(value)}
-                  placeholder={"Confirm password"}
-               />
+               <div className={styles.passwordContainer}>
+                  <Input
+                     title={"Confirm password"}
+                     type={typeConfirm}
+                     value={confirmPassword}
+                     onChange={(value: string) => setConfirmPassword(value)}
+                     placeholder={"Confirm password"}
+                  />
+                  <div className={styles.eyeIcon} onClick={onEyeClickConfirm}>
+                     {confirmPassword && typeConfirm !== "password" ? (
+                     <ClosedEyeIcon />
+                     ) : (
+                     <OpenEyeIcon />)}
+                  </div>
+               </div>
             </div>
                
                <Button
@@ -75,4 +109,4 @@ const SignIn = () => {
    );
 };
 
-export default SignIn;
+export default SignUp;

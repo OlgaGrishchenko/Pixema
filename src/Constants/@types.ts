@@ -12,3 +12,8 @@ export enum Theme {
    Light = 'light',
    Dark = 'dark'
 }
+
+export enum PasswordTypes {
+   Password = "password",
+   Text = "text",
+}

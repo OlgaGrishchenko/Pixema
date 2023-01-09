@@ -13,6 +13,7 @@ type InputProps = {
    error?: string;
    title?: string;
    className?: string;
+   type?: string;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -24,6 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       error,
       title,
       className,
+      type,
    } = props;
 
    const {theme} = useThemeContext();
@@ -42,6 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
                disabled={disabled}
                ref={ref}
                className={classNames(styles.input, {[styles.lightInput] : theme === Theme.Light})}
+               type={type}
             />
             {error && <div className={styles.textError}>{error}</div>}
       </>

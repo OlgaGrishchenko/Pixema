@@ -8,11 +8,20 @@ import Button, {ButtonTypes} from "../../Components/Button";
 import styles from "./SignIn.module.css";
 import { PathNames } from "../Router/Router";
 import Switcher from "../../Components/Switch";
+import { ClosedEyeIcon } from "../../Assets/Password/ClosedEyeIcon";
+import { OpenEyeIcon } from "../../Assets/Password/OpenEyeIcon";
+import { PasswordTypes } from "../../Constants/@types";
 
 const SignIn = () => {
 
    const [login, setLogin] = useState('')
    const [password, setPassword] = useState('')
+   const [type, setType] = useState(PasswordTypes.Password);
+  const onEyeClick = () => {
+    type === PasswordTypes.Password
+      ? setType(PasswordTypes.Text)
+      : setType(PasswordTypes.Password);
+  };
 
    const inputRef = useRef<HTMLInputElement>(null);
 
@@ -33,13 +42,25 @@ const SignIn = () => {
                   placeholder={"Your email"}
                   ref={inputRef}
                />
+               
+               <div className={styles.passwordContainer}>
+                  <Input
+                     title={"Password"}
+                     type={type}
+                     value={password}
+                     onChange={(value: string) => setPassword(value)}
+                     placeholder={"Password"}
+                  />
 
-               <Input
-                  title={"Password"}
-                  value={password}
-                  onChange={(value:string) => setPassword(value)}
-                  placeholder={"Your password"}
-               />
+                  <div className={styles.eyeIcon} onClick={onEyeClick}>
+                     {password && type !== "password" ? (
+                  <ClosedEyeIcon />
+                     ) : (
+                  <OpenEyeIcon />
+                  )}
+                  </div>
+               </div>
+
             </div>
                
                <div className={styles.forgotPassword}>{"Forgot password?"}</div>
