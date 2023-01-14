@@ -17,7 +17,7 @@ import classNames from "classnames";
 
 const MOCK_CARD = {
     id: 0,
-    image:
+    medium_cover_image:
         "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/26a099c6-f326-45ce-9e57-1dfa61937009/1920x",
     title: "Хороший год",
     genres: ["Драма -", " Мелодрама -", " Комедия"],

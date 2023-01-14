@@ -1,6 +1,6 @@
 export type CardType = {
    id: number;
-   image: string;
+   medium_cover_image: string;
    title: string;
    genres: string[];
    rating: number;
