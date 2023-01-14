@@ -5,9 +5,11 @@ import Button, { ButtonTypes } from "../Button";
 import Menu from "./Menu";
 import { useThemeContext } from "../../Context/Theme";
 import { Theme } from "../../Constants/@types";
+import { Link } from "react-router-dom";
 
 import styles from "./UserName.module.css";
 import classNames from "classnames";
+import { UserNameIcon } from "../../Assets/UserName/UserNameIcon";
 
 type UserNameProps = {
    username: string;
@@ -18,24 +20,35 @@ const UserName: FC<UserNameProps> = ({ username }) => {
    const {theme} = useThemeContext();
    const [isOpened, setOpened] = useState(false);
 
-   const isLoggedIn = true;
+   const isLoggedIn = false;
 
    const onArrowClick = () => {
       setOpened(!isOpened);
    };
 
    return <div className={classNames(styles.container, {[styles.lightContainer] : theme === Theme.Light})}>
-      <div className={classNames(styles.letter, {[styles.lightLetter] : theme === Theme.Light})} >{ username[0] }</div>
-      { username }
+      <div className={classNames(styles.letter, {[styles.lightLetter] : theme === Theme.Light})} > {isLoggedIn ? username[0] : <UserNameIcon /> }</div>
+      {isLoggedIn ? username : <span className={styles.nameBlock}>Sign In</span> }
       
-      <Button
+      {
+         isLoggedIn ?
+         <Button
          title={isOpened ? <ArrowRightIcon /> : <ArrowDownIcon />}
          onClick={onArrowClick}
          type={ButtonTypes.Primary}
          className={styles.arrowButton}
-      />
+      /> :
+         <Link to={`/sign-in`}>
+            <Button
+               title={<ArrowRightIcon />}
+               onClick={onArrowClick}
+               type={ButtonTypes.Primary}
+               className={styles.arrowButton}
+            />
+         </Link>
+      }
 
-      {isOpened && <Menu />}
+{isOpened && isLoggedIn && <Menu />}
       </div>
       
 };

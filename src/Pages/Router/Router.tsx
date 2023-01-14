@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 
 import SignIn from "../SignIn";
@@ -24,7 +24,6 @@ export enum PathNames {
    SettingsPage = "/settings",
    ContentPage = "/content-page",
 }
-
 
 const Router = () => {
 

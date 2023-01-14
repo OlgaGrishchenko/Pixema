@@ -2,6 +2,15 @@
    max-width: 266px;
    max-height: 433px;
    position: relative;
+   transition: all 0.5s;
+   color: #FFFFFF;
+}
+
+.container:hover {
+   transform: scale(1.05);
+   transition: all 0.5s;
+   cursor: pointer;
+   color: #7B61FF;
 }
 
 .rating {
@@ -31,6 +40,10 @@
    background-color: #00A340;
 }
 
+.ratingBlue {
+   background-color: #7B61FF;
+}
+
 .card {
    width: 266px;
    height: 357px;
@@ -38,7 +51,6 @@
 }
 
 .title {
-   color: #FFFFFF;
    font-family: 'Exo 2';
    font-style: normal;
    font-weight: 700;
@@ -46,7 +58,7 @@
    line-height: 24px;
 }
 
-.lightTitle {
+.lightContainer {
    color: #242426;
 }
 

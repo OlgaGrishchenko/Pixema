@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { PathNames } from "../Router/Router";
 
 import FormContainer from "../../Components/FormContainer";
 import Input from "../../Components/Input";
@@ -8,8 +10,10 @@ import { ClosedEyeIcon } from "../../Assets/Password/ClosedEyeIcon";
 import { OpenEyeIcon } from "../../Assets/Password/OpenEyeIcon";
 import { PasswordTypes } from "../../Constants/@types";
 
+import { registerUser } from "../../Redux/Reducers/authReducer";
+
 import styles from "./SignUp.module.css";
-import { PathNames } from "../Router/Router";
+
 
 const SignUp = () => {
 
@@ -17,6 +21,19 @@ const SignUp = () => {
    const [login, setLogin] = useState("");
    const [password, setPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
+   const onSignUp = () => {
+      dispatch(
+         registerUser({
+            datas: { email: login, password, password_confirmation : confirmPassword, purchase_code:'' },
+            callback: () => navigate(PathNames.Home, {
+            state: { email: login }
+            }),
+         })
+      );
+   };
 
    const [type, setType] = useState(PasswordTypes.Password);
    const onEyeClick = () => {
@@ -98,7 +115,7 @@ const SignUp = () => {
                   className={styles.button}
                   title={"Sign Up"}
                   type={ButtonTypes.Primary}
-                  onClick={()=>{}}
+                  onClick={onSignUp}
                />
                
                <div className={styles.signContainer}>

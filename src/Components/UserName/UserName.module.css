@@ -13,6 +13,10 @@
    position: relative;
 }
 
+.nameBlock {
+   width: 100px;
+}
+
 .lightContainer {
    color: #242426;
 }

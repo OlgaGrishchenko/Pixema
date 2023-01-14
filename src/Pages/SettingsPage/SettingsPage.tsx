@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState, ReactElement} from "react";
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 import Button, { ButtonTypes } from '../../Components/Button';
@@ -18,10 +18,15 @@ import classNames from 'classnames';
 const SettingsPage = () => {
 
    const navigate = useNavigate();
-   const { theme } = useThemeContext();   
+   const { theme } = useThemeContext();
+   const { state } = useLocation(); 
 
+   const [name, setName] = useState("Olga Grishchenko");
+   const [email, setEmail] = useState("a.lapitsky@gmail.com");
    const [password, setPassword] = useState("");
+   const [newPassword, setNewPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
+   
 
    return (
       <>
@@ -33,13 +38,27 @@ const SettingsPage = () => {
                <h2 className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>Profile</h2>
                <div className={classNames(styles.inner, {[styles.lightInner] : theme === Theme.Light})}>
                   <div className={styles.item}>
-                     <div className={classNames(styles.subtitle, {[styles.lightSubtitle] : theme === Theme.Light})}>Name</div>
-                     <div className={classNames(styles.box, {[styles.lightBox] : theme === Theme.Light})}>{"Artem Lapitsky"}</div>
+                     <Input
+                        title={"Name"}
+                        value={name}
+                        onChange={(value:string) => setName(value)}
+                        placeholder={"Your name"}
+                        className={styles.input}
+                     />
                   </div>
 
                   <div className={styles.item}>
-                     <div className={classNames(styles.subtitle, {[styles.lightSubtitle] : theme === Theme.Light})}>Email</div>
-                     <div className={classNames(styles.box, {[styles.lightBox] : theme === Theme.Light})}>{"a.lapitsky@gmail.com"}</div>
+                  {/*<Input
+                        title={"Email"}
+                        value={email}
+                        onChange={(value:string) => setEmail(value)}
+                        placeholder={"Your email"}
+                        className={styles.input}
+   />*/}
+      <div className={styles.email}>
+         <div>Email</div>
+         <div className={styles.inputEmail}>{state?.email || ""}</div>
+      </div>
                   </div>
                </div>
             </div>
@@ -48,16 +67,21 @@ const SettingsPage = () => {
                <h2 className={styles.title}>Password</h2>
                <div className={classNames(styles.inner, {[styles.lightInner] : theme === Theme.Light})}>
                   <div className={styles.item}>
-                     <div className={classNames(styles.subtitle, {[styles.lightSubtitle] : theme === Theme.Light})}>Password</div>
-                     <div className={classNames(styles.box, {[styles.lightBox] : theme === Theme.Light})}>{"Your password"}</div>
+                  <Input
+                  title={"Password"}
+                  value={password}
+                  onChange={(value:string) => setPassword(value)}
+                  placeholder={"Your password"}
+                  className={styles.input}
+                  />
                   </div>
 
                   <div className={styles.item}>
 
                   <Input
                   title={"New password"}
-                  value={password}
-                  onChange={(value:string) => setPassword(value)}
+                  value={newPassword}
+                  onChange={(value:string) => setNewPassword(value)}
                   placeholder={"Your password"}
                   className={styles.input}
                   />
@@ -98,6 +122,7 @@ const SettingsPage = () => {
                   type={ButtonTypes.Primary}
                   onClick={()=>{}}
                   />
+                  
                </div>
 
          </div>
