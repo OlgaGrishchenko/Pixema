@@ -13,7 +13,12 @@ const getAllFilms = () => {
    return APIfilms.get("v2/list_movies.json?limit=50");
 }
 
+const getSingleFilms = (id: string) => {
+   return APIfilms.get(`v2/movie_details.json?movie_id=${id}`);
+};
+
 export default {
    registerUser,
    getAllFilms,
+   getSingleFilms
 };

@@ -6,7 +6,6 @@ import ButtonGroup from "../../Components/ButtonGroup";
 import { useNavigate, useParams } from "react-router-dom";
 import { PathNames } from "../Router/Router";
 
-import Card from "../../Components/Card";
 import Sidebar from "../../Components/Sidebar";
 
 import { useThemeContext } from "../../Context/Theme";
@@ -14,36 +13,37 @@ import { Theme } from "../../Constants/@types";
 
 import styles from "./ContentPage.module.css";
 import classNames from "classnames";
-
-const MOCK_CARD = {
-    id: 0,
-    medium_cover_image:
-        "https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/26a099c6-f326-45ce-9e57-1dfa61937009/1920x",
-    title: "Хороший год",
-    genres: ["Драма -", " Мелодрама -", " Комедия"],
-    rating: 7.7,
-
-};
-
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleFilms } from "../../Redux/Reducers/filmsReducer";
+import filmsSelectors from "../../Redux/Selectors/filmsSelectors";
+import { Fire } from "../../Assets/Fire";
 
 const ContentPage = () => {
     const {theme} = useThemeContext();
     const params = useParams();
     const { id } = params;
+    const dispatch = useDispatch();
+    
 
+    useEffect(() => {
+        if (id) {
+            dispatch(getSingleFilms(id));
+        }
+    }, []);
 
+    const card = useSelector(filmsSelectors.getSingleFilms);
+    const rating = card?.rating;
+
+    console.log(card)
     return (
+            
         <div className={styles.container}>
             <Sidebar />
 
             <div className={styles.oneFilm}>
 
                 <div className={styles.leftContainer}>
-                    <img 
-                    src={"https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/26a099c6-f326-45ce-9e57-1dfa61937009/1920x"}
-                    alt={"image"}
-                    className={styles.image}/>
-
+                    <img src={card?.large_cover_image} alt="img" className={styles.image}/>
                     <ButtonGroup />
 
                 </div>
@@ -51,11 +51,46 @@ const ContentPage = () => {
                 <div className={styles.rightContainer}>
 
                     <div className={styles.topContainer}>
-                        <div className={styles.genres}>{MOCK_CARD.genres}</div>
-                        <div className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>{MOCK_CARD.title}</div>
-                        <div className={styles.rating}>{MOCK_CARD.rating}</div>
-                        <div className={classNames(styles.desc, {[styles.lightDesc] : theme === Theme.Light})}>In 1984, after saving the world in Wonder Woman (2017), the immortal Amazon warrior, Princess Diana of Themyscira, finds herself trying to stay under the radar, working as an archaeologist at the Smithsonian Museum. With the memory of the brave U.S. pilot, Captain Steve Trevor, etched on her mind, Diana Prince becomes embroiled in a sinister conspiracy of global proportions when a transparent, golden-yellow citrine gemstone catches the eye of the power-hungry entrepreneur, Maxwell Lord</div>
-                        <div className={styles.info}>{"Year"}</div>
+                        <div className={styles.genres}>{card?.genres.join(" ▪ ")}</div>
+                        <div className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>{card?.title}</div>
+                        <div className={styles.label}>
+                            <span className={classNames(styles.rating, {
+                                [styles.ratingRed]: rating && rating <= 5,
+                                [styles.ratingYellow]: rating && rating > 5 && rating && rating <= 7,
+                                [styles.ratingGreen]: rating && rating > 7 && rating && rating <= 7.5,
+                                [styles.ratingBlue]: rating && rating > 7.5,
+                                })}>
+                            {rating && rating > 7.5 ? <Fire /> : ''}
+                            {rating}
+                            </span>
+                            
+                            <span className={styles.time}>Imdb {card?.runtime}</span>
+                            <span className={styles.time}>136 min</span>
+                        </div>
+                        <div className={classNames(styles.desc, {[styles.lightDesc] : theme === Theme.Light})}>{card?.description_full}</div>
+                        
+                        <div className={styles.containerList}>
+                            <ul className={styles.leftList}>
+                                <li>Year</li>
+                                <li>Released</li>
+                                <li>BoxOffice</li>
+                                <li>Country</li>
+                                <li>Production</li>
+                                <li>Actors</li>
+                                <li>Director</li>
+                                <li>Writers</li>
+                            </ul>
+                            <ul className={classNames(styles.rightList, {[styles.lightRightList] : theme === Theme.Light})}>
+                                <li>{card?.year}</li>
+                                <li>15 Jul 2011</li>
+                                <li>$381,409,310</li>
+                                <li>United Kingdom, United States</li>
+                                <li>Heyday Films, Moving Picture Company, Warner Bros.</li>
+                                <li>Daniel Radcliffe, Emma Watson, Rupert Grint</li>
+                                <li>David Yates</li>
+                                <li>J.K. Rowling, Steve Kloves</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div className={styles.downContainer}>
@@ -63,10 +98,10 @@ const ContentPage = () => {
                         <div className={classNames(styles.recommendations, {[styles.lightRecommendations] : theme === Theme.Light})}>Recommendations</div>
                         
 
-                        <div className={styles.cards}>
-                            <Card card={MOCK_CARD}/>
-                            <Card card={MOCK_CARD}/>
-                        </div>
+                        {/*<div className={styles.cards}>
+                            <Card card={card}/>
+                            <Card card={card}/>
+    </div>*/}
 
                     </div>
                 </div>

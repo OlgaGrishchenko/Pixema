@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../Context/Theme";
 import { Theme } from "../../Constants/@types";
 
@@ -14,12 +15,19 @@ type CardProps = {
 };
 
 const Card: FC<CardProps> = ({ card }) => {
-   const { medium_cover_image, rating, title, genres } = card;
+   const { medium_cover_image, rating, title, genres, id } = card;
+   const navigate = useNavigate();
+   const {theme} = useThemeContext();
 
-   const {theme} = useThemeContext()
+   const onCardClick = () => {
+      navigate(`/content-page/${id}`);
+   };
+
 
    return (
-      <div className={classNames(styles.container, {[styles.lightContainer] : theme === Theme.Light})}>
+      <div className={classNames(styles.container, {[styles.lightContainer] : theme === Theme.Light})}
+      onClick={onCardClick}
+      >
          
          <span
             className={classNames(styles.rating, {

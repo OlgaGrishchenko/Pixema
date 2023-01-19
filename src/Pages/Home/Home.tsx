@@ -32,8 +32,6 @@ const Home = () => {
          dispatch(getFilms());
       }, []);
 
-      console.log(allFilms)
-
    return (
    <>
       <div className={styles.container}>

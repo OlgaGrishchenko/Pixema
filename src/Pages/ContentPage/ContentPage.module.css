@@ -16,7 +16,8 @@
 
 .image {
    width: 266px;
-   max-height: 356px;
+   height: 356px;
+   box-sizing: border-box;
 }
 
 .rightContainer {
@@ -36,6 +37,33 @@
    line-height: 24px;
    color: #AFB2B6;
 }
+
+.label {
+   display: flex;
+   gap: 20px;
+   line-height: 24px;
+   margin-bottom: 40px;
+}
+
+.time {
+   background-color: #323537;
+   height: 28px;
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 600;
+   font-size: 16px;
+   line-height: 24px;
+   color: #FFFFFF;
+   text-align: center;
+   padding: 4px 8px 2px;
+   border-radius: 6px;
+}
+
+
+
+
+
+
 
 .title {
    font-family: 'Exo 2';
@@ -61,8 +89,23 @@
    border-radius: 6px;
    width: 37px;
    height: 28px;
-   background-color: green;
    margin-bottom: 56px;
+}
+
+.ratingRed {
+   background-color: #F45D2D;
+}
+
+.ratingYellow {
+   background-color:  #F3A608;
+}
+
+.ratingGreen {
+   background-color: #00A340;
+}
+
+.ratingBlue {
+   background-color: #7B61FF;
 }
 
 .desc {
@@ -79,13 +122,55 @@ margin-bottom: 40px;
    color: #242426;
 }
 
-.info {
+.containerList {
+   display: flex;
+   gap: 54px;
+   margin-bottom: 56px;
+   font-size: 16px;
+   line-height: 24px;
+}
+.containerList li {
+   margin-bottom: 20px;
+}
+
+ul {
+   list-style-type: none;
+   padding-inline-start: 0px;
+}
+
+.leftList {
    font-family: 'Exo 2';
-font-style: normal;
+   font-style: normal;
 font-weight: 600;
 font-size: 16px;
 line-height: 24px;
 color: #AFB2B6;
+}
+
+.rightList {
+   font-family: 'Exo 2';
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 24px;
+   color: #FFFFFF;
+}
+
+.lightRightList {
+   color: black;
+}
+
+.infoValue {
+   font-family: 'Exo 2';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+color: #FFFFFF;
+}
+
+.lightinfoValue {
+   color: black;
 }
 
 .downContainer {

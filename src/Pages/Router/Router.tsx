@@ -22,7 +22,7 @@ export enum PathNames {
    ResetPassword = "/reset-password",
    Search = "/search/:searchString",
    SettingsPage = "/settings",
-   ContentPage = "/content-page",
+   ContentPage = "/content-page/:id",
 }
 
 const Router = () => {
