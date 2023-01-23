@@ -1,3 +1,8 @@
+export type GeneralDataWithCallback<T> = {
+   data: T;
+   callback: () => void;
+};
+
 export type RegisterUserData = {
    email: string,
    password: string,
@@ -5,7 +10,12 @@ export type RegisterUserData = {
    purchase_code: string
 };
 
-export type RegisterUserPayload = {
-   datas: RegisterUserData,
-   callback: () => void,
+export type RegisterUserPayload = GeneralDataWithCallback<RegisterUserData>;
+
+export type SignInUserData = {
+   email: string;
+   password: string;
+   token_name: string | null;
 };
+
+export type SignInUserPayload = GeneralDataWithCallback<SignInUserData>;

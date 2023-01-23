@@ -9,10 +9,14 @@ import { useThemeContext } from "../../Context/Theme";
 import { Theme } from "../../Constants/@types";
 
 import styles from './Header.module.css';
+import { useSelector } from "react-redux";
+import authSelectors from "../../Redux/Selectors/authSelectors";
 
 const Header = () => {
    const [searchValue, setSearchValue] = useState("");
-   const {theme} = useThemeContext()
+   const {theme} = useThemeContext();
+   const isLoggedIn = useSelector(authSelectors.getLoggedIn);
+   const dataUser = useSelector(authSelectors.getUserInfo);
 
    return (
       <div className={styles.inner}>
@@ -22,8 +26,11 @@ const Header = () => {
          </div>
 
          <div className={styles.innerBlock}>
-         <Search />
-         <UserName username={"Username"}/>
+         <Search 
+            value={searchValue}
+            onChange={(value: string) => setSearchValue(value)}
+         />
+         <UserName username={"dataUser.name"}/>
          </div>
       </div>
    );

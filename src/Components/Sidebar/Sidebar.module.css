@@ -21,3 +21,8 @@
 .categories:active {
    color: #7B61FF;
 }
+
+.disabled {
+   opacity: 40%;
+   pointer-events: none;
+ }

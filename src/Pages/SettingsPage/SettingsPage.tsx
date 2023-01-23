@@ -13,6 +13,10 @@ import { useThemeContext } from "../../Context/Theme";
 
 import styles from './SettingsPage.module.css';
 import classNames from 'classnames';
+import { useDispatch, useSelector } from "react-redux";
+import authSelectors from "../../Redux/Selectors/authSelectors";
+import { Console } from "console";
+import { getUserData } from "../../Redux/Reducers/authReducer";
 
 
 const SettingsPage = () => {
@@ -26,7 +30,9 @@ const SettingsPage = () => {
    const [password, setPassword] = useState("");
    const [newPassword, setNewPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
-   
+
+   const dataUser = useSelector(authSelectors.getUserInfo);
+   console.log(dataUser)
 
    return (
       <>
@@ -48,16 +54,10 @@ const SettingsPage = () => {
                   </div>
 
                   <div className={styles.item}>
-                  {/*<Input
-                        title={"Email"}
-                        value={email}
-                        onChange={(value:string) => setEmail(value)}
-                        placeholder={"Your email"}
-                        className={styles.input}
-   />*/}
+                  
       <div className={styles.email}>
          <div>Email</div>
-         <div className={styles.inputEmail}>{state?.email || ""}</div>
+         <div className={styles.inputEmail}>{""}</div>
       </div>
                   </div>
                </div>
@@ -101,8 +101,8 @@ const SettingsPage = () => {
                <h2 className={styles.title}>Color mode</h2>
                <div className={classNames(styles.inner, {[styles.lightInner] : theme === Theme.Light})}>
                   <div className={styles.item}>
-                     <div className={classNames(styles.subtitle, {[styles.lightSubtitle] : theme === Theme.Light})}>Dark</div>
-                     <span className={styles.spanThema}>Use dark thema</span>
+                     <div className={classNames(styles.subtitle, {[styles.lightSubtitle] : theme === Theme.Light})}>{theme === Theme.Light ? "White" : "Dark"}</div>
+                     <span className={styles.spanThema}>{theme === Theme.Light ? "Use dark thema" : "Use white thema"}</span>
                   </div>
 
                   <Switch />

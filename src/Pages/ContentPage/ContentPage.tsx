@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleFilms } from "../../Redux/Reducers/filmsReducer";
 import filmsSelectors from "../../Redux/Selectors/filmsSelectors";
 import { Fire } from "../../Assets/Fire";
+import { IMDb } from "../../Assets/ContentPage/IMDb";
 
 const ContentPage = () => {
     const {theme} = useThemeContext();
@@ -64,7 +65,7 @@ const ContentPage = () => {
                             {rating}
                             </span>
                             
-                            <span className={styles.time}>Imdb {card?.runtime}</span>
+                            <span className={styles.time}><IMDb /> {card?.runtime}</span>
                             <span className={styles.time}>136 min</span>
                         </div>
                         <div className={classNames(styles.desc, {[styles.lightDesc] : theme === Theme.Light})}>{card?.description_full}</div>

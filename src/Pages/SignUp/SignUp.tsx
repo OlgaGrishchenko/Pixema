@@ -27,8 +27,8 @@ const SignUp = () => {
    const onSignUp = () => {
       dispatch(
          registerUser({
-            datas: { email: login, password, password_confirmation : confirmPassword, purchase_code:'' },
-            callback: () => navigate(PathNames.Home, {
+            data: { email: login, password, password_confirmation : confirmPassword, purchase_code:'' },
+            callback: () => navigate(PathNames.SignIn, {
             state: { email: login }
             }),
          })

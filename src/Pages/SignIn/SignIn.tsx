@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import FormContainer from "../../Components/FormContainer";
 import Input from "../../Components/Input";
@@ -11,6 +11,8 @@ import Switcher from "../../Components/Switch";
 import { ClosedEyeIcon } from "../../Assets/Password/ClosedEyeIcon";
 import { OpenEyeIcon } from "../../Assets/Password/OpenEyeIcon";
 import { PasswordTypes } from "../../Constants/@types";
+import { signInUser } from "../../Redux/Reducers/authReducer";
+import { useDispatch } from "react-redux";
 
 const SignIn = () => {
 
@@ -30,6 +32,22 @@ const SignIn = () => {
          inputRef.current.focus();
       }
    }, []);
+
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+
+   const onSignIn = () => {
+      dispatch(
+         signInUser({
+            data: {
+               email: login,
+               password,
+               token_name: 'token',
+            },
+            callback: () => navigate(PathNames.Home),
+         })
+      );
+   };
    
    return (
          <FormContainer title={"Sign In"}>
@@ -69,7 +87,7 @@ const SignIn = () => {
                   className={styles.button}
                   title={"Sign In"}
                   type={ButtonTypes.Primary}
-                  onClick={()=>{}}
+                  onClick={onSignIn}
                />
 
             <div className={styles.signContainer}>

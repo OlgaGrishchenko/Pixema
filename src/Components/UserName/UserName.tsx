@@ -10,9 +10,11 @@ import { Link } from "react-router-dom";
 import styles from "./UserName.module.css";
 import classNames from "classnames";
 import { UserNameIcon } from "../../Assets/UserName/UserNameIcon";
+import { useSelector } from "react-redux";
+import authSelectors from "../../Redux/Selectors/authSelectors";
 
 type UserNameProps = {
-   username: string;
+   username: string | any;
 };
 
 const UserName: FC<UserNameProps> = ({ username }) => {
@@ -20,13 +22,14 @@ const UserName: FC<UserNameProps> = ({ username }) => {
    const {theme} = useThemeContext();
    const [isOpened, setOpened] = useState(false);
 
-   const isLoggedIn = false;
+   const isLoggedIn = useSelector(authSelectors.getLoggedIn);
 
    const onArrowClick = () => {
       setOpened(!isOpened);
    };
 
    return <div className={classNames(styles.container, {[styles.lightContainer] : theme === Theme.Light})}>
+      
       <div className={classNames(styles.letter, {[styles.lightLetter] : theme === Theme.Light})} > {isLoggedIn ? username[0] : <UserNameIcon /> }</div>
       {isLoggedIn ? username : <span className={styles.nameBlock}>Sign In</span> }
       

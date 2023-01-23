@@ -13,6 +13,7 @@ type SearchProps = {
    disabled?: boolean;
    filters?: boolean;
    className?: string;
+   onChange: (value: string) => void;
 };
 
 const Search: FC<SearchProps> = (props) => {
@@ -21,6 +22,7 @@ const Search: FC<SearchProps> = (props) => {
       disabled,
       filters,
       className,
+      onChange
    } = props;
 
    const {theme} = useThemeContext();
