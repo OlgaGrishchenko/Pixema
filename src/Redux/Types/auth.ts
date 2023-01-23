@@ -19,3 +19,8 @@ export type SignInUserData = {
 };
 
 export type SignInUserPayload = GeneralDataWithCallback<SignInUserData>;
+
+export type UserInfoData = {
+   mail: string;
+   name: string;
+};

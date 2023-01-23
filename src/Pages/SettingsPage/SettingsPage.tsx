@@ -25,14 +25,11 @@ const SettingsPage = () => {
    const { theme } = useThemeContext();
    const { state } = useLocation(); 
 
-   const [name, setName] = useState("Olga Grishchenko");
-   const [email, setEmail] = useState("a.lapitsky@gmail.com");
    const [password, setPassword] = useState("");
    const [newPassword, setNewPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
 
    const dataUser = useSelector(authSelectors.getUserInfo);
-   console.log(dataUser)
 
    return (
       <>
@@ -43,22 +40,18 @@ const SettingsPage = () => {
             <div className={styles.settingsBlock}>
                <h2 className={classNames(styles.title, {[styles.lightTitle] : theme === Theme.Light})}>Profile</h2>
                <div className={classNames(styles.inner, {[styles.lightInner] : theme === Theme.Light})}>
-                  <div className={styles.item}>
-                     <Input
-                        title={"Name"}
-                        value={name}
-                        onChange={(value:string) => setName(value)}
-                        placeholder={"Your name"}
-                        className={styles.input}
-                     />
+                  <div className={classNames(styles.item, {[styles.lightItem] : theme === Theme.Light})}>
+
+                        <div>Name</div>
+                        <div className={classNames(styles.inputInfo, {[styles.lightInputInfo] : theme === Theme.Light})}>{dataUser?.name}</div>
+
                   </div>
 
-                  <div className={styles.item}>
+                  <div className={classNames(styles.item, {[styles.lightItem] : theme === Theme.Light})}>
                   
-      <div className={styles.email}>
-         <div>Email</div>
-         <div className={styles.inputEmail}>{""}</div>
-      </div>
+                        <div>Email</div>
+                        <div className={classNames(styles.inputInfo, {[styles.lightInputInfo] : theme === Theme.Light})}>{dataUser?.mail}</div>
+
                   </div>
                </div>
             </div>

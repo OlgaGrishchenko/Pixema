@@ -1,11 +1,15 @@
 import { ACCESS_TOKEN_KEY } from './../../Constants/consts';
-import { RegisterUserPayload, SignInUserPayload } from './../Types/auth';
+import { RegisterUserPayload, SignInUserPayload, UserInfoData } from './../Types/auth';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+type initialStateType = {
+    isLoggedIn: boolean,
+    userInfo: UserInfoData | undefined
+};
 
-const INITIAL_STATE = {
+const INITIAL_STATE: initialStateType = {
     isLoggedIn: !!localStorage.getItem(ACCESS_TOKEN_KEY),
-    userName: "",
+    userInfo: undefined,
 }
 
 const authSlice = createSlice( {
@@ -16,8 +20,8 @@ const authSlice = createSlice( {
         signInUser: (state, action:PayloadAction<SignInUserPayload>) => {},
         setLoggedIn: (state, action: PayloadAction<boolean>) => {state.isLoggedIn = action.payload;},
         getUserData: (state, action: PayloadAction<undefined>) => {},
-        setUserData: (state, action: PayloadAction<string >) => {
-            state.userName = action.payload;},
+        setUserData: (state, action: PayloadAction<UserInfoData>) => {
+            state.userInfo = action.payload;},
         logoutUser: (state, action: PayloadAction<undefined>) => {},
     }
 })

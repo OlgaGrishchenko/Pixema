@@ -35,7 +35,6 @@ const ContentPage = () => {
     const card = useSelector(filmsSelectors.getSingleFilms);
     const rating = card?.rating;
 
-    console.log(card)
     return (
             
         <div className={styles.container}>

@@ -47,6 +47,32 @@
 .item {
    width: 50%;
    text-align: start;
+   color: #FFFFFF;
+   font-family: 'Exo 2';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.lightItem {
+   color: #242426;
+}
+
+.inputInfo {
+   background: #323537;
+   border-radius: 10px;
+   height: 56px;
+   padding: 16px 20px;
+   box-sizing: border-box;
+}
+
+.lightInputInfo {
+   background: #FFFFFF;
+   border: 2px solid #AFB2B6;
 }
 
 .subtitle {
@@ -97,24 +123,4 @@ color: #AFB2B6;
    display: flex;
    justify-content: end;
    gap: 40px;
-}
-
-.email {
-   color: #FFFFFF;
-   font-family: 'Exo 2';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 24px;
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-.inputEmail {
-   background: #323537;
-   border-radius: 10px;
-   height: 56px;
-   padding: 16px 20px;
-   box-sizing: border-box;
 }

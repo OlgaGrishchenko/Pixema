@@ -30,7 +30,7 @@ const Header = () => {
             value={searchValue}
             onChange={(value: string) => setSearchValue(value)}
          />
-         <UserName username={"dataUser.name"}/>
+         <UserName username={dataUser?.name}/>
          </div>
       </div>
    );

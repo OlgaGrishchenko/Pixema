@@ -24,6 +24,8 @@ function* signInUserWorker(action: PayloadAction<SignInUserPayload>) {
 
     if (ok) {
         localStorage.setItem(ACCESS_TOKEN_KEY, data?.user.access_token);
+        localStorage.setItem(ID_KEY, data.user.id);
+
         yield put(setLoggedIn(true));
         callback()
     } else {
@@ -37,10 +39,10 @@ function* getUserDataWorker() {
     const idUser = localStorage.getItem(ID_KEY) || '';
 
     const { ok, problem, data } = yield call(API.getUserInfo, accessToken, idUser);
-    console.log(data)
+    
 
     if (ok && data) {
-        yield put(setUserData(data.user.language));
+        yield put(setUserData({ mail: data.user.email, name: data.user.display_name }));
     } else {
         console.warn("Error while getting user info: ", problem);
     }
@@ -48,7 +50,8 @@ function* getUserDataWorker() {
 
 function* logoutUserWorker() {
     yield put(setLoggedIn(false));
-    localStorage.removeItem(ACCESS_TOKEN_KEY)
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    localStorage.removeItem(ID_KEY);
 }
 
 export default function* authSaga() {
