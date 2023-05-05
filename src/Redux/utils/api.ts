@@ -1,5 +1,6 @@
 import { RegisterUserData, SignInUserData } from './../Types/auth';
 import { create } from "apisauce";
+import { FilmsPayload } from '../Types/films';
 
 const API = create( {baseURL: "https://unelmamovie.com/api/v1"})
 
@@ -29,10 +30,9 @@ const getSingleFilms = (id: string) => {
    return APIfilms.get(`v2/movie_details.json?movie_id=${id}`);
 };
 
-const getSearchFilms = (query_term: string) => {
-   return APIfilms.get(`v2/list_movies.json?limit=50&query_term=${query_term}`);
-};
-
+const getTrendsFilms = () => {
+   return APIfilms.get("v2/list_movies.json?limit=50&minimum_rating=8.6");
+}
 
 export default {
    registerUser,
@@ -40,5 +40,5 @@ export default {
    getSingleFilms,
    signInUser,
    getUserInfo,
-   getSearchFilms,
+   getTrendsFilms,
 };

@@ -1,16 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-   CardsListType, CardType,
+   CardsListType, CardType
 } from "../../Constants/@types";
 
 type FilmsReducerState = {
    allFilms: CardsListType;
    singleFilms: CardType | null;
+   trendsFilms: CardsListType;
+   searchInputValue: string,
 };
 
 const initialState: FilmsReducerState = {
    allFilms: [],
    singleFilms: null,
+   trendsFilms: [],
+   searchInputValue: "",
 };
 
 const filmsSlice = createSlice({
@@ -19,17 +23,28 @@ const filmsSlice = createSlice({
    reducers: {
       getFilms: (state, action: PayloadAction<undefined>) => {},
       setFilms: (state, action: PayloadAction<CardsListType>) => {state.allFilms = action.payload;},
+      
+      setSearchInputValue: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload;},
 
       getSingleFilms: (state, action: PayloadAction<string>) => {},
       setSingleFilms: (state, action: PayloadAction<CardType>) => {state.singleFilms = action.payload;},
+
+      getTrendsFilms: (state, action: PayloadAction<undefined>) => {},
+      setTrendsFilms: (state, action: PayloadAction<CardsListType>) => {state.trendsFilms = action.payload;},
+
+      },
+
    }
-});
+);
 
    export const { 
       getFilms,
       setFilms,
       getSingleFilms,
-      setSingleFilms
+      setSingleFilms,
+      getTrendsFilms,
+      setTrendsFilms,
+      setSearchInputValue
    } = filmsSlice.actions;
 
    const filmsReducer = filmsSlice.reducer;

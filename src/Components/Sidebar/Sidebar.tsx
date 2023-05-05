@@ -19,8 +19,8 @@ const Sidebar = () => {
 
    const CATEGORIES = [
       { name: "Home", icon: <HomeIcon />, link: "/" },
-      { name: "Trends", icon: <TrendsIcon />, link: "" },
-      { name: "Favorites", icon: <FavoritesIcon />, link: "", disabled: false },
+      { name: "Trends", icon: <TrendsIcon />, link: "/trends" },
+      { name: "Favorites", icon: <FavoritesIcon />, link: "/favorites", disabled: false },
       { name: "Settings", icon: <SettingsIcon />, link: "/settings", disabled: false },
    ];
 

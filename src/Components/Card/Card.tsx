@@ -16,6 +16,7 @@ type CardProps = {
 
 const Card: FC<CardProps> = ({ card }) => {
    const { medium_cover_image, rating, title, genres, id } = card;
+   console.log(card.genres)
    const navigate = useNavigate();
    const {theme} = useThemeContext();
 
@@ -43,7 +44,7 @@ const Card: FC<CardProps> = ({ card }) => {
 
          <img className={styles.card} src={medium_cover_image} alt={''} />
          <div className={styles.title}>{title}</div>
-         <div className={styles.genres}>{genres.join(" ▪ ")}</div>
+         <div className={styles.genres}>{genres?.join(" ▪ ")}</div>
       </div>
    );
 };

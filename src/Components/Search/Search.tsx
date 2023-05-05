@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, MouseEventHandler, useEffect } from "react";
 import { useThemeContext } from "../../Context/Theme";
 import { Theme } from "../../Constants/@types";
 
@@ -7,9 +7,11 @@ import styles from './Search.module.css';
 
 import { SearchFilteredIcon } from '../../Assets/Search/SearchFilteredIcon';
 import { SearchIcon } from '../../Assets/Search/SearchIcon';
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 
 type SearchProps = {
-   value?: string;
+   value?: string | any;
    disabled?: boolean;
    filters?: boolean;
    className?: string;
@@ -26,6 +28,9 @@ const Search: FC<SearchProps> = (props) => {
    } = props;
 
    const {theme} = useThemeContext();
+   const {query_term} = useParams();
+   const dispatch = useDispatch();
+
 
    return (
       <div className={styles.wrapper}>

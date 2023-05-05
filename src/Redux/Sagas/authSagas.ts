@@ -40,8 +40,8 @@ function* getUserDataWorker() {
 
     const { ok, problem, data } = yield call(API.getUserInfo, accessToken, idUser);
     
-
     if (ok && data) {
+        console.log(data)
         yield put(setUserData({ mail: data.user.email, name: data.user.display_name }));
     } else {
         console.warn("Error while getting user info: ", problem);

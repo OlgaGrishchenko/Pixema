@@ -42,6 +42,7 @@ type TorrensType = {
 
 export type CardsListType = Array<CardType>;
 
+
 export enum Theme {
    Light = 'light',
    Dark = 'dark'
@@ -51,3 +52,11 @@ export enum PasswordTypes {
    Password = "password",
    Text = "text",
 }
+
+export type GetCardApi = {
+   query_term: string;
+   sort_by: string;
+   genre: string;
+   page: number;
+   isOverwrite: boolean;
+};

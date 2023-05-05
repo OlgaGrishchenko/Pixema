@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import Logo from '../../Assets/Image/logo';
 import LogoLightTheme from "../../Assets/Image/logoLightTheme";
 import { PathNames } from '../../Pages/Router/Router';
@@ -18,6 +18,7 @@ const Header = () => {
    const isLoggedIn = useSelector(authSelectors.getLoggedIn);
    const dataUser = useSelector(authSelectors.getUserInfo);
 
+
    return (
       <div className={styles.inner}>
 
@@ -28,7 +29,7 @@ const Header = () => {
          <div className={styles.innerBlock}>
          <Search 
             value={searchValue}
-            onChange={(value: string) => setSearchValue(value)}
+            onChange={()=>{}}
          />
          <UserName username={dataUser?.name}/>
          </div>

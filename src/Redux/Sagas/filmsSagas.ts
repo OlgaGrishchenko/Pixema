@@ -6,6 +6,8 @@ import {
    setFilms,
    getSingleFilms,
    setSingleFilms,
+   getTrendsFilms,
+   setTrendsFilms,
 } from "../Reducers/filmsReducer";
 
 import API from "../utils/api";
@@ -30,9 +32,20 @@ function* getSingleFilmsWorker(action: PayloadAction<string>) {
    }
 }
 
+function* getTrendsFilmsWorker(action: PayloadAction<undefined>) {
+   const { ok, data, problem } = yield call(APIfilms.getTrendsFilms);
+
+   if (ok && data) {
+      yield put(setTrendsFilms(data.data.movies));
+   } else {
+      console.warn("Error fetching posts: ", problem);
+   }
+}
+
 export default function* filmsSaga() {
    yield all([
       takeLatest(getFilms, getFilmsWorker),
       takeLatest(getSingleFilms, getSingleFilmsWorker),
+      takeLatest(getTrendsFilms, getTrendsFilmsWorker),
    ]);
 }

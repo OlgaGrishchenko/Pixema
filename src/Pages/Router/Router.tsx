@@ -15,7 +15,8 @@ import LogoWrapper from "../LogoWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "../../Redux/Reducers/authReducer";
 import authSelectors from "../../Redux/Selectors/authSelectors";
-import { userInfo } from "os";
+import SearchPage from "../SearchPage";
+import TrendsPage from "../TrendsPage";
 
 
 export enum PathNames {
@@ -24,9 +25,10 @@ export enum PathNames {
    SignUp = "/sign-up",
    NewPassword = "/new-password",
    ResetPassword = "/reset-password",
-   Search = "/search/:searchString",
+   Search = "/search/:query_term",
    SettingsPage = "/settings",
    ContentPage = "/content-page/:id",
+   TrendsPage = "/trends"
 }
 
 const Router = () => {
@@ -47,6 +49,8 @@ const Router = () => {
             <Route path={PathNames.Home} element={<PagesWrapper />}>
                <Route path={PathNames.ContentPage} element={<ContentPage />} />
                <Route path={PathNames.SettingsPage} element={ isLoggedIn ? <SettingsPage /> : <Navigate to={PathNames.SignIn} /> } />
+               <Route path={PathNames.Search} element={<SearchPage />} />
+               <Route path={PathNames.TrendsPage} element={<TrendsPage />} />
 
             </Route>
 

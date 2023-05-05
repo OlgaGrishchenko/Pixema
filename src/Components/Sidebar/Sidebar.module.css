@@ -14,7 +14,7 @@
    gap: 25px;
 }
 
-.categories:hover {
+.categories:hover, .activeСategories {
    color: #917CFF;
 }
 
@@ -25,4 +25,4 @@
 .disabled {
    opacity: 40%;
    pointer-events: none;
- }
+}
