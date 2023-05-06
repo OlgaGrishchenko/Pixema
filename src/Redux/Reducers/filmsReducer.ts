@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
    CardsListType, CardType
 } from "../../Constants/@types";
+import { FilmsPayload } from "../Types/films";
 
 type FilmsReducerState = {
    allFilms: CardsListType;
@@ -21,7 +22,7 @@ const filmsSlice = createSlice({
    name: "filmsReducer",
    initialState,
    reducers: {
-      getFilms: (state, action: PayloadAction<undefined>) => {},
+      getFilms: (state, action: PayloadAction<FilmsPayload>) => {},
       setFilms: (state, action: PayloadAction<CardsListType>) => {state.allFilms = action.payload;},
       
       setSearchInputValue: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload;},

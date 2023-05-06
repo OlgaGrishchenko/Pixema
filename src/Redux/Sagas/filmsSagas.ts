@@ -12,10 +12,12 @@ import {
 
 import API from "../utils/api";
 import APIfilms from "../utils/api";
+import { FilmsPayload } from "../Types/films";
 
-function* getFilmsWorker(action: PayloadAction<undefined>) {
-   const { ok, data, problem } = yield call(APIfilms.getAllFilms);
-
+function* getFilmsWorker(action: PayloadAction<FilmsPayload>) {
+   const { query_term }= action.payload;
+   const { ok, data, problem } = yield call(APIfilms.getAllFilms, query_term);
+   
    if (ok && data) {
       yield put(setFilms(data.data.movies));
    } else {

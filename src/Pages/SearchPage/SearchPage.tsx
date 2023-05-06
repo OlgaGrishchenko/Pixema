@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import CardsList from "../../Components/CardsList";
 import { CardsListType } from "../../Constants/@types";
 import Sidebar from "../../Components/Sidebar";
@@ -14,9 +14,11 @@ const SearchPage = () => {
 
    const dispatch = useDispatch();
    const allFilms = useSelector(filmsSelectors.getAllFilms);
+   const { query_term } = useParams();
+
       useEffect(() => {
-         dispatch(getFilms());
-      }, []);
+         dispatch(getFilms( {query_term} ));
+      }, [query_term]);
 
    return (
    <>
