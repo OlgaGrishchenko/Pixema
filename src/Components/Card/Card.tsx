@@ -16,7 +16,6 @@ type CardProps = {
 
 const Card: FC<CardProps> = ({ card }) => {
    const { medium_cover_image, rating, title, genres, id } = card;
-   console.log(card.genres)
    const navigate = useNavigate();
    const {theme} = useThemeContext();
 

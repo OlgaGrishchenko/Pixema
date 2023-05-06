@@ -31,18 +31,23 @@ const Search: FC<SearchProps> = (props) => {
    const {query_term} = useParams();
    const dispatch = useDispatch();
 
+   const OnSearchClick = () => {
+
+   }
+
 
    return (
       <div className={styles.wrapper}>
          <input
             placeholder="Search"
             className={classNames(styles.input, { [styles.disabled]: disabled }, {[styles.lightInput] : theme === Theme.Light})}
+            onClick={OnSearchClick}
          />
-      {filters ? (
+      {/*filters ? (
          <div className={styles.svg}><SearchFilteredIcon /></div>
       ) : (
          <div className={styles.svg}><SearchIcon /></div>
-      )}
+      )*/}
    </div>
    );
 };
