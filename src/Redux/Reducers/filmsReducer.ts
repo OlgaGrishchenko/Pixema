@@ -9,6 +9,8 @@ type FilmsReducerState = {
    singleFilms: CardType | null;
    trendsFilms: CardsListType;
    searchInputValue: string,
+   totalCount: number,
+   pageTotalCount: number,
 };
 
 const initialState: FilmsReducerState = {
@@ -16,6 +18,8 @@ const initialState: FilmsReducerState = {
    singleFilms: null,
    trendsFilms: [],
    searchInputValue: "",
+   totalCount: 0,
+   pageTotalCount: 0,
 };
 
 const filmsSlice = createSlice({
@@ -33,7 +37,15 @@ const filmsSlice = createSlice({
       getTrendsFilms: (state, action: PayloadAction<undefined>) => {},
       setTrendsFilms: (state, action: PayloadAction<CardsListType>) => {state.trendsFilms = action.payload;},
 
+      setValueSearch: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload},
+
+      setTotalCount: (state, action: PayloadAction<number>) => {state.totalCount = action.payload;},
+
+      setPageTotalCount: (state, action: PayloadAction<number>) => {state.pageTotalCount = action.payload;},
+
       },
+
+      
 
    }
 );
@@ -45,7 +57,9 @@ const filmsSlice = createSlice({
       setSingleFilms,
       getTrendsFilms,
       setTrendsFilms,
-      setSearchInputValue
+      setValueSearch,
+      setTotalCount,
+      setPageTotalCount,
    } = filmsSlice.actions;
 
    const filmsReducer = filmsSlice.reducer;

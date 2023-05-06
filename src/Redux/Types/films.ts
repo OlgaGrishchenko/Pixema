@@ -1,3 +1,4 @@
 export type FilmsPayload = {
-   query_term?: string
+   query_term?: string,
+   page?: number,
 }

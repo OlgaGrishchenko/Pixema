@@ -15,11 +15,12 @@ const Home = () => {
 
    const dispatch = useDispatch();
    const allFilms = useSelector(filmsSelectors.getAllFilms);
-   const { query_term } = useParams();
+   const getTotalCount = useSelector(filmsSelectors.getTotalCount);
+   const searchInputValue = useSelector(filmsSelectors.setValueSearch);
 
       useEffect(() => {
-         dispatch(getFilms( {query_term} ));
-      }, [query_term]);
+         dispatch(getFilms({query_term: searchInputValue, page: getTotalCount }));
+      }, [searchInputValue, getTotalCount]);
 
    return (
    <>
