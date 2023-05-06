@@ -22,8 +22,8 @@ const getUserInfo = (access_token: string, idUser: string) => {
 
 const APIfilms = create({ baseURL: 'https://yts.mx/api' });
 
-const getAllFilms = (query_term?: string) => {
-   return APIfilms.get(`v2/list_movies.json?limit=50&query_term=${query_term}`);
+const getAllFilms = ({query_term, page}: FilmsPayload) => {
+   return APIfilms.get(`v2/list_movies.json?limit=10`, {query_term, page});
 }
 
 const getSingleFilms = (id: string) => {

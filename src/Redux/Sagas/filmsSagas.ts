@@ -8,6 +8,7 @@ import {
    setSingleFilms,
    getTrendsFilms,
    setTrendsFilms,
+   setPageTotalCount,
 } from "../Reducers/filmsReducer";
 
 import API from "../utils/api";
@@ -15,11 +16,12 @@ import APIfilms from "../utils/api";
 import { FilmsPayload } from "../Types/films";
 
 function* getFilmsWorker(action: PayloadAction<FilmsPayload>) {
-   const { query_term }= action.payload;
-   const { ok, data, problem } = yield call(APIfilms.getAllFilms, query_term);
+   const { query_term, page }= action.payload;
+   const { ok, data, problem } = yield call(APIfilms.getAllFilms, {query_term, page});
    
    if (ok && data) {
       yield put(setFilms(data.data.movies));
+      yield put(setPageTotalCount(data.data.page_number));
    } else {
       console.warn("Error fetching posts: ", problem);
    }
