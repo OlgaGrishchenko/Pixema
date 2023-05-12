@@ -14,9 +14,9 @@ type CardsListProps = {
 }
 
 const CardsList:FC<CardsListProps> = ({cardsList}) => {
-
+  
    return cardsList && cardsList.length > 0 ? ( 
-   
+
          <div className={styles.container}> 
          {cardsList.map((card)=>{
             return <Card card={card} key={card.id} />

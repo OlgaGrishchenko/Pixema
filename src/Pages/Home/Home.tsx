@@ -31,10 +31,7 @@ const Home = () => {
          setCurrentPage(currentPage + 1)
       }
    
-      const hasMore = allFilms.length < totalCount;
-      console.log(hasMore)
-      console.log(currentPage)
-      console.log(hasMore)   
+      const hasMore = allFilms.length < totalCount; 
 
    return (
    <>

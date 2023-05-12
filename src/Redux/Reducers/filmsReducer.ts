@@ -46,18 +46,6 @@ const filmsSlice = createSlice({
       setTotalCount: (state, action: PayloadAction<number>) => {state.totalCount = action.payload;},
 
       setPageTotalCount: (state, action: PayloadAction<number>) => {state.pageTotalCount = action.payload;},
-
-      setSearchedFilms: (state, action:PayloadAction<SetFilmsPayload>) => {
-         const { isOverwrite, films } = action.payload;
-         state.isOverGlobal = isOverwrite;
-         if (isOverwrite) {
-            state.searchedFilms = films
-         } else {
-            state.searchedFilms = [...state.searchedFilms, ...films];
-         }
-      },
-
-      },
    }
 );
 

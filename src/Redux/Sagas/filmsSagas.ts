@@ -9,6 +9,7 @@ import {
    getTrendsFilms,
    setTrendsFilms,
    setTotalCount,
+   setPageTotalCount,
 } from "../Reducers/filmsReducer";
 
 import API from "../utils/api";
