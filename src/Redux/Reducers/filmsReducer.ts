@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
    CardsListType, CardType
 } from "../../Constants/@types";
-import { FilmsPayload } from "../Types/films";
+import { FilmsPayload, SetFilmsPayload } from "../Types/films";
 
 type FilmsReducerState = {
    allFilms: CardsListType;
@@ -11,6 +11,8 @@ type FilmsReducerState = {
    searchInputValue: string,
    totalCount: number,
    pageTotalCount: number,
+   searchedFilms: CardsListType,
+   isOverGlobal: boolean,
 };
 
 const initialState: FilmsReducerState = {
@@ -20,6 +22,8 @@ const initialState: FilmsReducerState = {
    searchInputValue: "",
    totalCount: 0,
    pageTotalCount: 0,
+   searchedFilms: [],
+   isOverGlobal: false,
 };
 
 const filmsSlice = createSlice({
@@ -27,7 +31,7 @@ const filmsSlice = createSlice({
    initialState,
    reducers: {
       getFilms: (state, action: PayloadAction<FilmsPayload>) => {},
-      setFilms: (state, action: PayloadAction<CardsListType>) => {state.allFilms = action.payload;},
+      setFilms: (state, action: PayloadAction<CardsListType>) => {state.allFilms = [...state.allFilms, ...action.payload];},
       
       setSearchInputValue: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload;},
 
@@ -43,10 +47,17 @@ const filmsSlice = createSlice({
 
       setPageTotalCount: (state, action: PayloadAction<number>) => {state.pageTotalCount = action.payload;},
 
+      setSearchedFilms: (state, action:PayloadAction<SetFilmsPayload>) => {
+         const { isOverwrite, films } = action.payload;
+         state.isOverGlobal = isOverwrite;
+         if (isOverwrite) {
+            state.searchedFilms = films
+         } else {
+            state.searchedFilms = [...state.searchedFilms, ...films];
+         }
       },
 
-      
-
+      },
    }
 );
 
@@ -60,6 +71,7 @@ const filmsSlice = createSlice({
       setValueSearch,
       setTotalCount,
       setPageTotalCount,
+      setSearchedFilms,
    } = filmsSlice.actions;
 
    const filmsReducer = filmsSlice.reducer;

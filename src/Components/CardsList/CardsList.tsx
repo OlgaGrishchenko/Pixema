@@ -15,34 +15,13 @@ type CardsListProps = {
 
 const CardsList:FC<CardsListProps> = ({cardsList}) => {
 
-   const dispatch = useDispatch();
-   const getTotalCount = useSelector(filmsSelectors.getTotalCount);
-   const totalCount = useSelector(filmsSelectors.getPageTotalCount);
-   const [currentPage, setCurrentPage] = useState(1);
-
-   const onScroll = () => {
-      dispatch(setTotalCount(totalCount + 1))
-   }
-
-   const hasMore = cardsList.length < getTotalCount;
-   console.log(hasMore)
-   console.log(getTotalCount)
-   console.log(totalCount)
-
    return cardsList && cardsList.length > 0 ? ( 
-      <InfiniteScroll
-         next={onScroll}
-         hasMore={hasMore}
-         dataLength={cardsList.length}
-         loader={<h1>{"LOADING"}</h1>}
-         scrollThreshold={0.9}
-      >
+   
          <div className={styles.container}> 
          {cardsList.map((card)=>{
             return <Card card={card} key={card.id} />
          })}
       </div>
-            </InfiniteScroll>
    ) : <EmptyState />
 };
 
