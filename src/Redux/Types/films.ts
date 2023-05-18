@@ -3,7 +3,7 @@ import { CardsListType } from './../../Constants/@types';
 export type FilmsPayload = {
    query_term?: string,
    page?: number,
-   offset: number,
+   offset?: number,
 }
 
 export type SetFilmsPayload = {

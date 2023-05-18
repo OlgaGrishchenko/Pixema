@@ -7,4 +7,6 @@ export default {
    setValueSearch: (state: RootState) => state.filmsReducer.searchInputValue,
    getTotalCount: (state: RootState) => state.filmsReducer.totalCount,
    getPageTotalCount: (state: RootState) => state.filmsReducer.pageTotalCount,
+   getSearchedFilms: (state: RootState) => state.filmsReducer.searchedFilms,
+   getLoading: (state: RootState) => state.filmsReducer.isLoading,
 };

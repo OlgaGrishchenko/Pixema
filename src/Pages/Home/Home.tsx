@@ -9,47 +9,79 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import styles from "./Home.module.css";
 import filmsSelectors from "../../Redux/Selectors/filmsSelectors";
-import { getFilms, setTotalCount } from "../../Redux/Reducers/filmsReducer";
-
+import {
+  getFilms,
+  getSearchedFilms,
+  setSearchedFilms,
+  setTotalCount,
+} from "../../Redux/Reducers/filmsReducer";
+import Loader from "../../Components/Loader";
+import Lottie from "react-lottie";
+import * as animationData from "../../Assets/loading.json";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const allFilms = useSelector(filmsSelectors.getAllFilms);
+  const totalCount = useSelector(filmsSelectors.getTotalCount);
+  const searchInputValue = useSelector(filmsSelectors.setValueSearch);
+  const searchedFilms = useSelector(filmsSelectors.getSearchedFilms);
 
-   const dispatch = useDispatch();
-   const allFilms = useSelector(filmsSelectors.getAllFilms);
-   const totalCount = useSelector(filmsSelectors.getTotalCount);
-   const searchInputValue = useSelector(filmsSelectors.setValueSearch);
+  const isLoading = useSelector(filmsSelectors.getLoading);
 
-   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-      useEffect(() => {
-         const offset = 20 * (currentPage - 1);
-         dispatch(getFilms({ query_term: searchInputValue, offset }));
-      }, [searchInputValue, currentPage]);
-      
+  const renderFilmsData = () => {
+    if (searchInputValue) {
+      return searchedFilms;
+    } else return allFilms;
+  };
 
-      const onScroll = () => {
-         setCurrentPage(currentPage + 1)
-      }
-   
-      const hasMore = allFilms.length < totalCount; 
+  const renderFilms = renderFilmsData();
 
-   return (
-   <>
+  useEffect(() => {
+    const offset = 20 * (currentPage - 1);
+    if (searchInputValue) {
+      dispatch(getSearchedFilms({ query_term: searchInputValue, offset }));
+    } else {
+      dispatch(getFilms({ query_term: searchInputValue, offset }));
+    }
+  }, [searchInputValue, currentPage]);
+
+  const onScroll = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const hasMore = allFilms.length < totalCount;
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+        preserveAspectRatio: "xMidYMid slice",
+    },
+};
+
+  return (
+    
+    <>
       <div className={styles.container}>
-         <Sidebar />
+        <Sidebar />
 
-         <InfiniteScroll
-         next={onScroll}
-         hasMore={hasMore}
-         dataLength={allFilms.length}
-         loader={<h1 className={styles.loading}>{"LOADING"}</h1>}
-         scrollThreshold={0.9}
-         >
-         <CardsList cardsList={allFilms} />
-         </InfiniteScroll>
-      </div>
-   </>
-   );
+        {!isLoading ? 
+        <InfiniteScroll
+          next={onScroll}
+          hasMore={hasMore}
+          dataLength={renderFilms.length}
+          loader={<Loader />}
+          scrollThreshold={0.9}
+          className={styles.infiniteScroll}
+        >
+          <CardsList cardsList={renderFilms} />
+        </InfiniteScroll> : <Loader />}
+      </div> 
+    </>
+  );
 };
 
 export default Home;

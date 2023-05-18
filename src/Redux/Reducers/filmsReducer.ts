@@ -12,7 +12,7 @@ type FilmsReducerState = {
    totalCount: number,
    pageTotalCount: number,
    searchedFilms: CardsListType,
-   isOverGlobal: boolean,
+   isLoading: boolean,
 };
 
 const initialState: FilmsReducerState = {
@@ -23,7 +23,7 @@ const initialState: FilmsReducerState = {
    totalCount: 0,
    pageTotalCount: 0,
    searchedFilms: [],
-   isOverGlobal: false,
+   isLoading: false,
 };
 
 const filmsSlice = createSlice({
@@ -40,13 +40,26 @@ const filmsSlice = createSlice({
 
       getTrendsFilms: (state, action: PayloadAction<undefined>) => {},
       setTrendsFilms: (state, action: PayloadAction<CardsListType>) => {state.trendsFilms = action.payload;},
-
-      setValueSearch: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload},
-
+   
       setTotalCount: (state, action: PayloadAction<number>) => {state.totalCount = action.payload;},
 
       setPageTotalCount: (state, action: PayloadAction<number>) => {state.pageTotalCount = action.payload;},
+
+      setValueSearch: (state, action: PayloadAction<string>) => {state.searchInputValue = action.payload},
+
+      getSearchedFilms: (state, action: PayloadAction<FilmsPayload>) => {},
+      setSearchedFilms: (state, action: PayloadAction<CardsListType>) => {
+         if (action.payload) {
+            state.searchedFilms = [...state.searchedFilms, ...action.payload]
+          } else {
+            state.searchedFilms = []
+          }
+      },
+      setSearchedFilmsLoading: (state, action: PayloadAction<boolean>) => {
+         state.isLoading = action.payload;
+     },
    }
+}
 );
 
    export const { 
@@ -56,10 +69,12 @@ const filmsSlice = createSlice({
       setSingleFilms,
       getTrendsFilms,
       setTrendsFilms,
-      setValueSearch,
       setTotalCount,
       setPageTotalCount,
+      getSearchedFilms,
       setSearchedFilms,
+      setValueSearch,
+      setSearchedFilmsLoading,
    } = filmsSlice.actions;
 
    const filmsReducer = filmsSlice.reducer;

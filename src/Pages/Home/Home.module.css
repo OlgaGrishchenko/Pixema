@@ -7,3 +7,13 @@
 .loading {
    color: white;
 }
+
+.infiniteScroll {
+   display: flex;
+   height: 100vh;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 32px;
+   margin: 0 auto;
+}
